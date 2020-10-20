@@ -1,0 +1,11 @@
+.sidebar__heading{
+    display: flex;
+    justify-content: center;
+    padding:20px;
+}
+
+.sidebar__menuItem{
+    display: flex;
+    justify-content: center;
+    padding:20px;
+}
