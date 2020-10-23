@@ -9,12 +9,14 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import './SideBar.css'
+import { withRouter } from 'react-router';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
+        overflow: 'hidden'
     },
     appBar: {
         width: `calc(100% - ${drawerWidth}px)`,
@@ -36,9 +38,34 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function SideBar() {
+function SideBar(props) {
     const classes = useStyles();
-    const sideBarMenu = ['HOME', 'ABOUT', 'PORTFOLIO', 'SERVICES', 'BLOG', 'CONTACT']
+    const sideBarMenu = [
+        {
+            text: 'HOME',
+            onClick: () => props.history.push('/')
+        },
+        {
+            text: 'ABOUT',
+            onClick: () => props.history.push('/about')
+        },
+        {
+            text: 'PORTFOLIO',
+            onClick: () => props.history.push('/')
+        },
+        {
+            text: 'SERVICES',
+            onClick: () => props.history.push('/')
+        },
+        {
+            text: 'BLOG',
+            onClick: () => props.history.push('/')
+        },
+        {
+            text: 'CONTACT',
+            onClick: () => props.history.push('/')
+        }
+    ]
     return (
         <div className={classes.root}>
             <Drawer
@@ -55,9 +82,9 @@ function SideBar() {
 
                 <Divider />
                 <List>
-                    {sideBarMenu.map((text, index) => (
-                        <ListItem button key={text} className="sidebar__menuItem">
-                            <ListItemText align="center" style={{ padding: 5 }} primary={text} />
+                    {sideBarMenu.map((item, index) => (
+                        <ListItem button key={item.text} className="sidebar__menuItem">
+                            <ListItemText align="center" style={{ padding: 5 }} onClick={item.onClick} primary={item.text} />
                         </ListItem>
                     ))}
                 </List>
@@ -67,7 +94,7 @@ function SideBar() {
                         <ListItemText primary="+91 8075460699" />
                     </ListItem>
                     <ListItem>
-                        <ListItemText primary="muhamedsufail777@gmail.com" />
+                        <ListItemText primary="muhamedsufail@gmail.com" />
                     </ListItem>
                 </List>
 
@@ -81,4 +108,4 @@ function SideBar() {
     );
 }
 
-export default SideBar;
+export default withRouter(SideBar);
