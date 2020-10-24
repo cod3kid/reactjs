@@ -51,19 +51,19 @@ function SideBar(props) {
         },
         {
             text: 'PORTFOLIO',
-            onClick: () => props.history.push('/')
+            onClick: () => props.history.push('/portfolio')
         },
         {
             text: 'SERVICES',
-            onClick: () => props.history.push('/')
+            onClick: () => props.history.push('/services')
         },
         {
             text: 'BLOG',
-            onClick: () => props.history.push('/')
+            onClick: () => props.history.push('/blog')
         },
         {
             text: 'CONTACT',
-            onClick: () => props.history.push('/')
+            onClick: () => props.history.push('/contact')
         }
     ]
     return (
@@ -89,9 +89,9 @@ function SideBar(props) {
                     ))}
                 </List>
 
-                <List>
-                    <ListItem>
-                        <ListItemText primary="+91 8075460699" />
+                <List >
+                    <ListItem >
+                        <ListItemText style={{fontSize:'0.7em'}} secondary="+91 8075460699" />
                     </ListItem>
                     <ListItem>
                         <ListItemText primary="muhamedsufail@gmail.com" />
