@@ -5,6 +5,7 @@ import ComponentB from "./components/ComponentB";
 import CounterOne from "./components/CounterOne";
 import CounterThree from "./components/CounterThree";
 import CounterTwo from "./components/CounterTwo";
+import DataFetching from "./components/DataFetching";
 
 const initialState = 0;
 const reducer = (state, action) => {
@@ -27,16 +28,19 @@ function App() {
   return (
     <CountContext.Provider value={{ count, dispatch }}>
       <div className="App">
-        {/* Simple State and Action */}
+        {/* 1. Simple State and Action */}
         {/* <CounterOne /> */}
-        {/* Complex State and Action */}
+        {/* 2. Complex State and Action */}
         {/* <CounterTwo /> */}
-        {/* Multiple useReducers */}
+        {/* 3. Multiple useReducers */}
         {/* <CounterThree /> */}
-        {/* useReducer with useContext for Global State Management */}
-        Counter Value {count}
+        {/* 4. useReducer with useContext for Global State Management */}
+        {/* Counter Value {count}
         <ComponentA />
-        <ComponentB />
+        <ComponentB /> */}
+
+        {/* 5. useReducer to fetch data */}
+        <DataFetching />
       </div>
     </CountContext.Provider>
   );
