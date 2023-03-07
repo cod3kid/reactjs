@@ -2,9 +2,10 @@ import "./App.css";
 import Input from "./Input";
 
 function App() {
+  const showValue = (value) => <>This value is {value}</>;
   return (
     <div className="App">
-      <Input showValue={(value) => <>This value is {value}</>} />
+      <Input showValue={showValue} />
     </div>
   );
 }
