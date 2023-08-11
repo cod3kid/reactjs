@@ -13,12 +13,8 @@ test("shows two input and a button", () => {
 });
 
 test("click on add button and calls onUserAdd function", () => {
-  const argList = [];
-  const callback = (...args) => {
-    argList.push(args);
-  };
-
-  render(<UserForm onUserAdd={callback} />);
+  const onUserAdd = jest.fn();
+  render(<UserForm onUserAdd={onUserAdd} />);
 
   const [nameInput, emailInput] = screen.getAllByRole("textbox");
   const button = screen.getByRole("button");
@@ -31,8 +27,8 @@ test("click on add button and calls onUserAdd function", () => {
 
   user.click(button);
 
-  expect(argList).toHaveLength(1);
-  expect(argList[0][0]).toEqual({
+  expect(onUserAdd).toHaveBeenCalled();
+  expect(onUserAdd).toHaveBeenCalledWith({
     name: "John Wick",
     email: "johnwick@gmail.com",
   });
