@@ -16,7 +16,9 @@ test("click on add button and calls onUserAdd function", () => {
   const onUserAdd = jest.fn();
   render(<UserForm onUserAdd={onUserAdd} />);
 
-  const [nameInput, emailInput] = screen.getAllByRole("textbox");
+  const nameInput = screen.getByRole("textbox", { name: /Name/ });
+  const emailInput = screen.getByRole("textbox", { name: /Email/ });
+
   const button = screen.getByRole("button");
 
   user.click(nameInput);
