@@ -35,3 +35,23 @@ test("click on add button and calls onUserAdd function", () => {
     email: "johnwick@gmail.com",
   });
 });
+
+test("", () => {
+  render(<UserForm onUserAdd={() => {}} />);
+
+  const nameInput = screen.getByRole("textbox", { name: /Name/ });
+  const emailInput = screen.getByRole("textbox", { name: /Email/ });
+
+  const button = screen.getByRole("button");
+
+  user.click(nameInput);
+  user.keyboard("John Wick");
+
+  user.click(emailInput);
+  user.keyboard("johnwick@gmail.com");
+
+  user.click(button);
+
+  expect(nameInput).toHaveValue("");
+  expect(emailInput).toHaveValue("");
+});
