@@ -29,6 +29,11 @@ const reducer = (state = initialState, action) => {
 const store = createStore(reducer);
 // getState method is used to get the current state of the application
 console.log("Initial State", store.getState());
-
+store.subscribe(() => {
+  console.log("Action dispatched", store.getState());
+});
 store.dispatch(orderCake());
-console.log("New State", store.getState());
+store.dispatch(orderCake());
+store.dispatch(orderCake());
+
+// console.log("New State", store.getState());
