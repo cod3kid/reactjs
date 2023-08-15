@@ -18,7 +18,7 @@ const reducer = (state = initialState, action) => {
     case CAKE_ORDERED:
       return {
         ...state,
-        numOfCakes: state.numOfCakes - 1,
+        numOfCakes: state.numOfCakes - action.quantity,
       };
 
     default:
@@ -29,3 +29,6 @@ const reducer = (state = initialState, action) => {
 const store = createStore(reducer);
 // getState method is used to get the current state of the application
 console.log("Initial State", store.getState());
+
+store.dispatch(orderCake());
+console.log("New State", store.getState());
