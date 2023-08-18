@@ -1,8 +1,6 @@
 const redux = require("redux");
 const reduxLogger = require("redux-logger");
-
 const createStore = redux.createStore;
-const bindActionCreators = redux.bindActionCreators;
 const applyMiddleware = redux.applyMiddleware;
 const logger = reduxLogger.logger;
 
@@ -46,26 +44,10 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-const store = createStore(reducer);
-// getState method is used to get the current state of the application
+const store = createStore(reducer, applyMiddleware(logger));
 console.log("Initial State", store.getState());
-const unsubscribe = store.subscribe(() => {
-  console.log("Action dispatched", store.getState());
-});
+
 store.dispatch(orderCake());
 store.dispatch(orderCake());
 store.dispatch(orderCake());
-
-unsubscribe();
-store.dispatch(orderCake());
-console.log("State after unsubscribe", store.getState());
-
-store.dispatch(restockCake(10));
-console.log("State after restocking", store.getState());
-
-// console.log("New State", store.getState());
-
-const actions = bindActionCreators({ orderCake, restockCake }, store.dispatch);
-actions.orderCake();
-actions.orderCake();
-console.log("State after bindActionCreators", store.getState());
+store.dispatch(restockCake(40));
