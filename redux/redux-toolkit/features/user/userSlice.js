@@ -5,7 +5,7 @@ const axios = require("axios");
 // Generated
 const fetchUsers = createAsyncThunk("user/fetchUsers", () => {
   return axios
-    .get("https://jsonplaceholder.typicode.com/useffrs")
+    .get("https://jsonplaceholder.typicode.com/users")
     .then((response) => {
       return response.data.map((user) => user.id);
     });
