@@ -2,11 +2,11 @@ import React from "react";
 
 type GreetProps = {
   name: string;
-  messagesCount: number;
+  messagesCount?: number;
   isLoggedIn: boolean;
 };
 function Greet(props: GreetProps) {
-  const { name, messagesCount, isLoggedIn } = props;
+  const { name, messagesCount = 0, isLoggedIn } = props;
   return (
     <div>
       <h2>
