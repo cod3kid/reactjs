@@ -1,6 +1,8 @@
 import "./App.css";
+import Button from "./components/Button";
 import Greet from "./components/Greet";
 import Heading from "./components/Heading";
+import Input from "./components/Input";
 import Oscar from "./components/Oscar";
 import Person from "./components/Person";
 import PersonList from "./components/PersonList";
@@ -17,7 +19,7 @@ function App() {
   ];
   return (
     <div className="App">
-      <Greet name="Itachi Uchiha" isLoggedIn={false} />
+      {/* <Greet name="Itachi Uchiha" isLoggedIn={false} /> */}
       {/* <Person name={{ first: "Madara", last: "Uchiha" }} /> */}
       {/* <PersonList names={names} /> */}
       {/* <Status status="success" /> */}
@@ -25,6 +27,8 @@ function App() {
       {/* <Oscar>
         <Heading>Oscar goes to ... Leonardo Di Caprio</Heading>
       </Oscar> */}
+      <Button clicked={(e, id) => console.log(id, " Button Clicked", e)} />
+      <Input value="" handleChange={(e) => console.log(e)} />
     </div>
   );
 }
