@@ -2,8 +2,7 @@ import React from "react";
 type HeadingProp = {
   children: string;
 };
-function Heading(props: HeadingProp) {
-  const { children } = props;
+function Heading({ children }: HeadingProp) {
   return <h2>{children}</h2>;
 }
 
