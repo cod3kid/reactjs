@@ -8,6 +8,7 @@ import Oscar from "./components/Oscar";
 import Person from "./components/Person";
 import PersonList from "./components/PersonList";
 import Status from "./components/Status";
+import User from "./components/User";
 
 function App() {
   const names = [
@@ -36,6 +37,7 @@ function App() {
           width: 100,
         }}
       /> */}
+      <User />
     </div>
   );
 }
