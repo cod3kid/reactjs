@@ -1,12 +1,20 @@
 import { useContext } from "react";
 import { UserContext } from "./UserProvider";
+
 export const User = () => {
   const userContext = useContext(UserContext);
   const handleLogin = () => {
-    userContext?.setUser({ name: "Itachi", email: "itachi@mailinator.com" });
+    // if (userContext) {
+    userContext?.setUser({
+      name: "Sufail",
+      email: "sufail@mailinator.com",
+    });
+    // }
   };
   const handleLogout = () => {
+    // if (userContext) {
     userContext?.setUser(null);
+    // }
   };
   return (
     <div>

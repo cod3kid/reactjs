@@ -14,7 +14,9 @@ type UserContextProviderProps = {
   children: JSX.Element;
 };
 
-export const UserContext = createContext<UserContextType | null>(null);
+export const UserContext = createContext<UserContextType | null>(
+  {} as UserContextType
+);
 
 export const UserContextProvider = ({ children }: UserContextProviderProps) => {
   const [user, setUser] = useState<AuthUser | null>(null);
