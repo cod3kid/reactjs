@@ -10,6 +10,10 @@ import Person from "./components/Person";
 import PersonList from "./components/PersonList";
 import Status from "./components/Status";
 import User from "./components/User";
+import Box from "./components/context/Box";
+import ThemeContextProvider from "./components/context/ThemeProvider";
+import UserContextProvider from "./components/context/UserProvider";
+import { User as UserFromContext } from "./components/context/User";
 
 function App() {
   const names = [
@@ -39,7 +43,13 @@ function App() {
         }}
       /> */}
       {/* <User /> */}
-      <Counter />
+      {/* <Counter /> */}
+      {/* <ThemeContextProvider>
+        <Box />
+      </ThemeContextProvider> */}
+      <UserContextProvider>
+        <UserFromContext />
+      </UserContextProvider>
     </div>
   );
 }
