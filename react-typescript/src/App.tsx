@@ -16,6 +16,7 @@ import UserContextProvider from "./components/context/UserProvider";
 import { User as UserFromContext } from "./components/context/User";
 import DomRef from "./components/ref/DomRef";
 import MutableRef from "./components/ref/MutableRef";
+import ClassCounter from "./components/class/Counter";
 
 function App() {
   const names = [
@@ -53,7 +54,8 @@ function App() {
         <UserFromContext />
       </UserContextProvider> */}
       {/* <DomRef /> */}
-      <MutableRef />
+      {/* <MutableRef /> */}
+      <ClassCounter message="Increment" />
     </div>
   );
 }
