@@ -17,6 +17,8 @@ import { User as UserFromContext } from "./components/context/User";
 import DomRef from "./components/ref/DomRef";
 import MutableRef from "./components/ref/MutableRef";
 import ClassCounter from "./components/class/Counter";
+import Private from "./components/component-prop/Private";
+import Profile from "./components/component-prop/Profile";
 
 function App() {
   const names = [
@@ -55,7 +57,8 @@ function App() {
       </UserContextProvider> */}
       {/* <DomRef /> */}
       {/* <MutableRef /> */}
-      <ClassCounter message="Increment" />
+      {/* <ClassCounter message="Increment" /> */}
+      {/* <Private isLoggedIn={true} Component={Profile} /> */}
     </div>
   );
 }
