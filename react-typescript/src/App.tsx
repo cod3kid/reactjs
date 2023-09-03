@@ -19,6 +19,7 @@ import MutableRef from "./components/ref/MutableRef";
 import ClassCounter from "./components/class/Counter";
 import Private from "./components/component-prop/Private";
 import Profile from "./components/component-prop/Profile";
+import List from "./components/generics/List";
 
 function App() {
   const names = [
@@ -59,6 +60,19 @@ function App() {
       {/* <MutableRef /> */}
       {/* <ClassCounter message="Increment" /> */}
       {/* <Private isLoggedIn={true} Component={Profile} /> */}
+      {/* <List
+        list={["Batman", "Superman", "Spiderman"]}
+        onClick={(item) => console.log(item)}
+      />
+      <List list={[1, 2, 3]} onClick={(item) => console.log(item)} /> */}
+      <List
+        list={[
+          { id: 1, name: "Clark Kent" },
+          { id: 2, name: "Bruce Wayne" },
+          { id: 3, name: "Peter Parker" },
+        ]}
+        onClick={(item) => console.log(item)}
+      />
     </div>
   );
 }
