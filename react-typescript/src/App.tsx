@@ -22,6 +22,8 @@ import Profile from "./components/component-prop/Profile";
 import List from "./components/generics/List";
 import RandomNumber from "./components/restricting-props/RandomNumber";
 import Toast from "./components/template-literals/Toast";
+import HTMLButton from "./components/wrapping-html-comp/Button";
+import HTMLInput from "./components/wrapping-html-comp/Input";
 
 function App() {
   const names = [
@@ -76,7 +78,11 @@ function App() {
         onClick={(item) => console.log(item)}
       /> */}
       {/* <RandomNumber value={10} isNegative /> */}
-      <Toast position="center" />
+      {/* <Toast position="center" /> */}
+      <HTMLButton variant="primary" onClick={() => console.log("Clicked")}>
+        Login Button
+      </HTMLButton>
+      <HTMLInput type="number" />
     </div>
   );
 }
