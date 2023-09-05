@@ -21,6 +21,7 @@ import Private from "./components/component-prop/Private";
 import Profile from "./components/component-prop/Profile";
 import List from "./components/generics/List";
 import RandomNumber from "./components/restricting-props/RandomNumber";
+import Toast from "./components/template-literals/Toast";
 
 function App() {
   const names = [
@@ -74,7 +75,8 @@ function App() {
         ]}
         onClick={(item) => console.log(item)}
       /> */}
-      <RandomNumber value={10} isNegative />
+      {/* <RandomNumber value={10} isNegative /> */}
+      <Toast position="center" />
     </div>
   );
 }
