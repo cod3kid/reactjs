@@ -25,6 +25,7 @@ import Toast from "./components/template-literals/Toast";
 import HTMLButton from "./components/wrapping-html-comp/Button";
 import HTMLInput from "./components/wrapping-html-comp/Input";
 import CustomComponent from "./components/extracting-comp-prop-types/CustomComponent";
+import Text from "./components/polymorphic-comp/Text";
 
 function App() {
   const names = [
@@ -84,7 +85,16 @@ function App() {
         Login Button
       </HTMLButton>
       <HTMLInput type="number" /> */}
-      <CustomComponent name="Mui" isLoggedIn={false} />
+      {/* <CustomComponent name="Mui" isLoggedIn={false} /> */}
+      <Text as="h1" size="lg">
+        Heading
+      </Text>
+      <Text as="p" size="md">
+        Paragraph
+      </Text>
+      <Text as="label" htmlFor="someid" size="sm" color="secondary">
+        Label
+      </Text>
     </div>
   );
 }
