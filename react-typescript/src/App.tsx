@@ -24,6 +24,7 @@ import RandomNumber from "./components/restricting-props/RandomNumber";
 import Toast from "./components/template-literals/Toast";
 import HTMLButton from "./components/wrapping-html-comp/Button";
 import HTMLInput from "./components/wrapping-html-comp/Input";
+import CustomComponent from "./components/extracting-comp-prop-types/CustomComponent";
 
 function App() {
   const names = [
@@ -79,10 +80,11 @@ function App() {
       /> */}
       {/* <RandomNumber value={10} isNegative /> */}
       {/* <Toast position="center" /> */}
-      <HTMLButton variant="primary" onClick={() => console.log("Clicked")}>
+      {/* <HTMLButton variant="primary" onClick={() => console.log("Clicked")}>
         Login Button
       </HTMLButton>
-      <HTMLInput type="number" />
+      <HTMLInput type="number" /> */}
+      <CustomComponent name="Mui" isLoggedIn={false} />
     </div>
   );
 }
