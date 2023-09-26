@@ -1,11 +1,42 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { AuthenticationDetails, CognitoUser } from "amazon-cognito-identity-js";
 import "../App.css";
+import UserPool from "../utils/cognito";
 
-function Register() {
+function Login() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    console.log(UserPool.getCurrentUser());
+  }, []);
+
+  const signInUser = () => {
+    const authenticationDetails = new AuthenticationDetails({
+      Username: formData.email,
+      Password: formData.password,
+    });
+
+    const userData = {
+      Username: formData.email,
+      Pool: UserPool,
+    };
+    console.log(formData);
+    const cognitoUser = new CognitoUser(userData);
+
+    cognitoUser.authenticateUser(authenticationDetails, {
+      onSuccess: (result) => {
+        const accessToken = result.getAccessToken().getJwtToken();
+        console.log(result);
+      },
+
+      onFailure: (err) => {
+        alert(err.message || JSON.stringify(err));
+      },
+    });
+  };
 
   return (
     <div className="form">
@@ -33,10 +64,12 @@ function Register() {
         />
       </div>
       <div>
-        <button className="signup">Sign Up</button>
+        <button className="signup" onClick={() => signInUser()}>
+          Login
+        </button>
       </div>
     </div>
   );
 }
 
-export default Register;
+export default Login;
