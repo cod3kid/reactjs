@@ -8,7 +8,8 @@ type FormData = {
 };
 function YoutubeForm() {
   const form = useForm<FormData>();
-  const { register, control, handleSubmit } = form;
+  const { register, control, handleSubmit, formState } = form;
+  const { errors } = formState;
 
   const onSubmitForm = (data: FormData) => {
     console.log(data);
@@ -23,10 +24,11 @@ function YoutubeForm() {
           {...register("username", {
             required: {
               value: true,
-              message: "Hello world",
+              message: "Username is required",
             },
           })}
         />
+        {errors?.username && <span>{errors?.username?.message}</span>}
 
         <label htmlFor="email">Email</label>
         <input
@@ -38,11 +40,34 @@ function YoutubeForm() {
                 /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
               message: "Invalid email",
             },
+            required: {
+              value: true,
+              message: "Email is required",
+            },
+            // validate: (fieldValue) => {
+            //   if (fieldValue === "admin@mail.com") {
+            //     return "Enter a different email address";
+            //   }
+            // },
+            validate: {
+              isNotAdmin: (fieldValue) => {
+                if (fieldValue === "admin@mail.com") {
+                  return "Enter a different email address";
+                }
+              },
+              isNotBlacklisted: (fieldValue) => {
+                if (fieldValue.endsWith("blocked.com")) {
+                  return "Enter an allowed domain name";
+                }
+              },
+            },
           })}
         />
+        {errors?.email && <span>{errors?.email?.message}</span>}
 
         <label htmlFor="channel">Channel</label>
         <input type="text" id="channel" {...register("channel")} />
+        {errors?.channel && <span>{errors?.channel?.message}</span>}
 
         <button>Submit</button>
       </form>
