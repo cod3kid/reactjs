@@ -7,7 +7,26 @@ type FormData = {
   channel: string;
 };
 function YoutubeForm() {
-  const form = useForm<FormData>();
+  const form = useForm<FormData>({
+    // defaultValues: {
+    //   username: "Batman",
+    //   email: "batman@gmail.com",
+    //   channel: "",
+    // },
+
+    defaultValues: async () => {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/users/1"
+      );
+      const data = await response.json();
+
+      return {
+        username: "Superman",
+        email: data.email,
+        channel: "",
+      };
+    },
+  });
   const { register, control, handleSubmit, formState } = form;
   const { errors } = formState;
 
