@@ -5,27 +5,35 @@ type FormData = {
   username: string;
   email: string;
   channel: string;
+  social: {
+    twitter: string;
+    facebook: string;
+  };
 };
 function YoutubeForm() {
   const form = useForm<FormData>({
-    // defaultValues: {
-    //   username: "Batman",
-    //   email: "batman@gmail.com",
-    //   channel: "",
-    // },
-
-    defaultValues: async () => {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users/1"
-      );
-      const data = await response.json();
-
-      return {
-        username: "Superman",
-        email: data.email,
-        channel: "",
-      };
+    defaultValues: {
+      username: "Batman",
+      email: "batman@gmail.com",
+      channel: "",
+      social: {
+        twitter: "",
+        facebook: "",
+      },
     },
+
+    // defaultValues: async () => {
+    //   const response = await fetch(
+    //     "https://jsonplaceholder.typicode.com/users/1"
+    //   );
+    //   const data = await response.json();
+
+    //   return {
+    //     username: "Superman",
+    //     email: data.email,
+    //     channel: "",
+    //   };
+    // },
   });
   const { register, control, handleSubmit, formState } = form;
   const { errors } = formState;
@@ -88,6 +96,11 @@ function YoutubeForm() {
         <input type="text" id="channel" {...register("channel")} />
         {errors?.channel && <span>{errors?.channel?.message}</span>}
 
+        <label htmlFor="twitter">Twitter</label>
+        <input type="text" id="twitter" {...register("social.twitter")} />
+
+        <label htmlFor="facebook">Facebook</label>
+        <input type="text" id="facebook" {...register("social.facebook")} />
         <button>Submit</button>
       </form>
       <DevTool control={control} />
