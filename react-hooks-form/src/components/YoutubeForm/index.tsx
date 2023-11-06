@@ -9,6 +9,7 @@ type FormData = {
     twitter: string;
     facebook: string;
   };
+  phoneNumbers: string[];
 };
 function YoutubeForm() {
   const form = useForm<FormData>({
@@ -20,6 +21,7 @@ function YoutubeForm() {
         twitter: "",
         facebook: "",
       },
+      phoneNumbers: ["", ""],
     },
 
     // defaultValues: async () => {
@@ -101,6 +103,16 @@ function YoutubeForm() {
 
         <label htmlFor="facebook">Facebook</label>
         <input type="text" id="facebook" {...register("social.facebook")} />
+
+        <label htmlFor="primary-phone">Primary Phone No.</label>
+        <input type="text" id="primary-phone" {...register("phoneNumbers.0")} />
+
+        <label htmlFor="secondary-phone">Secondary Phone No.</label>
+        <input
+          type="text"
+          id="secondary-phone"
+          {...register("phoneNumbers.1")}
+        />
         <button>Submit</button>
       </form>
       <DevTool control={control} />
