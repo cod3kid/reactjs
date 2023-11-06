@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 
 type FormData = {
@@ -10,6 +10,9 @@ type FormData = {
     facebook: string;
   };
   phoneNumbers: string[];
+  phNumbers: {
+    number: string;
+  }[];
 };
 function YoutubeForm() {
   const form = useForm<FormData>({
@@ -22,6 +25,11 @@ function YoutubeForm() {
         facebook: "",
       },
       phoneNumbers: ["", ""],
+      phNumbers: [
+        {
+          number: "",
+        },
+      ],
     },
 
     // defaultValues: async () => {
@@ -43,6 +51,12 @@ function YoutubeForm() {
   const onSubmitForm = (data: FormData) => {
     console.log(data);
   };
+
+  const { fields, append, remove } = useFieldArray({
+    name: "phNumbers",
+    control,
+  });
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmitForm)} noValidate>
@@ -113,6 +127,28 @@ function YoutubeForm() {
           id="secondary-phone"
           {...register("phoneNumbers.1")}
         />
+
+        <div>
+          <label htmlFor="phone-list">List of Phone Numbers</label>
+          <div>
+            {fields.map((field, index) => (
+              <div key={field.id}>
+                <input
+                  type="text"
+                  id="phone-list"
+                  {...register(`phNumbers.${index}.number` as const)}
+                />
+                {index > 0 && (
+                  <button onClick={() => remove(index)}>Remove</button>
+                )}
+              </div>
+            ))}
+            <button onClick={() => append({ number: "" })}>
+              Add Phone Numbers
+            </button>
+          </div>
+        </div>
+
         <button>Submit</button>
       </form>
       <DevTool control={control} />
