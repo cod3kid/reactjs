@@ -13,6 +13,8 @@ type FormData = {
   phNumbers: {
     number: string;
   }[];
+  age: number;
+  dob: Date;
 };
 function YoutubeForm() {
   const form = useForm<FormData>({
@@ -30,6 +32,7 @@ function YoutubeForm() {
           number: "",
         },
       ],
+      dob: new Date(),
     },
 
     // defaultValues: async () => {
@@ -148,6 +151,34 @@ function YoutubeForm() {
             </button>
           </div>
         </div>
+
+        <label htmlFor="age">Age</label>
+        <input
+          type="number"
+          id="age"
+          {...register("age", {
+            valueAsNumber: true,
+            required: {
+              value: true,
+              message: "Age is required",
+            },
+          })}
+        />
+        {errors?.age && <span>{errors?.age?.message}</span>}
+
+        <label htmlFor="dob">DoB</label>
+        <input
+          type="date"
+          id="dob"
+          {...register("dob", {
+            valueAsDate: true,
+            required: {
+              value: true,
+              message: "Date of Birth is required",
+            },
+          })}
+        />
+        {errors?.dob && <span>{errors?.dob?.message}</span>}
 
         <button>Submit</button>
       </form>
