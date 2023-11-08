@@ -51,7 +51,7 @@ function YoutubeForm() {
     //   };
     // },
   });
-  const { register, control, handleSubmit, formState, watch } = form;
+  const { register, control, handleSubmit, formState, watch, getValues } = form;
   const { errors } = formState;
 
   const onSubmitForm = (data: FormData) => {
@@ -63,12 +63,19 @@ function YoutubeForm() {
     control,
   });
 
-  useEffect(() => {
-    const watchObj = watch((values) => {
-      console.log(values);
-    });
-    return () => watchObj.unsubscribe();
-  }, [watch]);
+  // useEffect(() => {
+  //   const watchObj = watch((values) => {
+  //     console.log(values);
+  //   });
+  //   return () => watchObj.unsubscribe();
+  // }, [watch]);
+
+  const handleGetValues = () => {
+    // console.log(getValues("username"));
+    // console.log(getValues(["username", "email"]));
+
+    console.log(getValues());
+  };
 
   // const watchUsername = watch("username");
   // const watchUsernameAndEmail = watch(["username", "email"]);
@@ -198,6 +205,9 @@ function YoutubeForm() {
         />
         {errors?.dob && <span>{errors?.dob?.message}</span>}
 
+        <button type="button" onClick={() => handleGetValues()}>
+          Get Values
+        </button>
         <button>Submit</button>
       </form>
       <DevTool control={control} />
