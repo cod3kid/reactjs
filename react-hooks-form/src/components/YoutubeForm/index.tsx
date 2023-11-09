@@ -51,7 +51,15 @@ function YoutubeForm() {
     //   };
     // },
   });
-  const { register, control, handleSubmit, formState, watch, getValues } = form;
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState,
+    watch,
+    getValues,
+    setValue,
+  } = form;
   const { errors } = formState;
 
   const onSubmitForm = (data: FormData) => {
@@ -75,6 +83,15 @@ function YoutubeForm() {
     // console.log(getValues(["username", "email"]));
 
     console.log(getValues());
+  };
+
+  const handleSetValue = () => {
+    // setValue("username", "");
+    setValue("username", "", {
+      shouldValidate: true,
+      shouldDirty: true,
+      shouldTouch: true,
+    });
   };
 
   // const watchUsername = watch("username");
@@ -207,6 +224,10 @@ function YoutubeForm() {
 
         <button type="button" onClick={() => handleGetValues()}>
           Get Values
+        </button>
+
+        <button type="button" onClick={() => handleSetValue()}>
+          Set Value
         </button>
         <button>Submit</button>
       </form>
