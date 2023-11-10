@@ -60,8 +60,9 @@ function YoutubeForm() {
     getValues,
     setValue,
   } = form;
-  const { errors } = formState;
+  const { errors, dirtyFields, touchedFields, isDirty } = formState;
 
+  console.log({ dirtyFields, touchedFields, isDirty });
   const onSubmitForm = (data: FormData) => {
     console.log(data);
   };
