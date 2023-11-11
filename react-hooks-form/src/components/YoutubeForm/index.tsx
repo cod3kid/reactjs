@@ -62,7 +62,7 @@ function YoutubeForm() {
   } = form;
   const { errors, dirtyFields, touchedFields, isDirty } = formState;
 
-  console.log({ dirtyFields, touchedFields, isDirty });
+  // console.log({ dirtyFields, touchedFields, isDirty });
   const onSubmitForm = (data: FormData) => {
     console.log(data);
   };
@@ -159,7 +159,17 @@ function YoutubeForm() {
         {errors?.channel && <span>{errors?.channel?.message}</span>}
 
         <label htmlFor="twitter">Twitter</label>
-        <input type="text" id="twitter" {...register("social.twitter")} />
+        <input
+          type="text"
+          id="twitter"
+          {...register("social.twitter", {
+            // disabled:true
+          })}
+          disabled={watch("channel") === ""}
+        />
+        {errors?.social?.twitter && (
+          <span>{errors?.social?.twitter?.message}</span>
+        )}
 
         <label htmlFor="facebook">Facebook</label>
         <input type="text" id="facebook" {...register("social.facebook")} />
