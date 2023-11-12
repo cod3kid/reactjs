@@ -1,4 +1,4 @@
-import { useForm, useFieldArray } from "react-hook-form";
+import { useForm, useFieldArray, FieldErrors } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import { useEffect } from "react";
 
@@ -67,6 +67,10 @@ function YoutubeForm() {
     console.log(data);
   };
 
+  const onErrors = (errors: FieldErrors<FormData>) => {
+    console.log(errors);
+  };
+
   const { fields, append, remove } = useFieldArray({
     name: "phNumbers",
     control,
@@ -105,7 +109,7 @@ function YoutubeForm() {
     <div>
       <h2>Youtube Form ({renderCount / 2})</h2>
       <h4>Watch Username</h4>
-      <form onSubmit={handleSubmit(onSubmitForm)} noValidate>
+      <form onSubmit={handleSubmit(onSubmitForm, onErrors)} noValidate>
         <label htmlFor="username">Username</label>
         <input
           type="text"
@@ -155,7 +159,16 @@ function YoutubeForm() {
         {errors?.email && <span>{errors?.email?.message}</span>}
 
         <label htmlFor="channel">Channel</label>
-        <input type="text" id="channel" {...register("channel")} />
+        <input
+          type="text"
+          id="channel"
+          {...register("channel", {
+            required: {
+              value: true,
+              message: "Channel is required",
+            },
+          })}
+        />
         {errors?.channel && <span>{errors?.channel?.message}</span>}
 
         <label htmlFor="twitter">Twitter</label>
