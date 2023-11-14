@@ -60,7 +60,19 @@ function YoutubeForm() {
     getValues,
     setValue,
   } = form;
-  const { errors, dirtyFields, touchedFields, isDirty, isValid } = formState;
+  const {
+    errors,
+    dirtyFields,
+    touchedFields,
+    isDirty,
+    isValid,
+    isSubmitting,
+    isSubmitted,
+    isSubmitSuccessful,
+    submitCount,
+  } = formState;
+
+  console.log({ isSubmitting, isSubmitted, isSubmitSuccessful, submitCount });
 
   // console.log({ dirtyFields, touchedFields, isDirty });
   const onSubmitForm = (data: FormData) => {
@@ -253,7 +265,7 @@ function YoutubeForm() {
         <button type="button" onClick={() => handleSetValue()}>
           Set Value
         </button>
-        <button disabled={!isDirty || !isValid}>Submit</button>
+        <button disabled={!isDirty || !isValid || isSubmitting}>Submit</button>
       </form>
       <DevTool control={control} />
     </div>
