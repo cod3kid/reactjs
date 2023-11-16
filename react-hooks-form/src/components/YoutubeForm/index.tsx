@@ -37,6 +37,13 @@ function YoutubeForm() {
       ],
       dob: new Date(),
     },
+    // mode: "onBlur",
+    // mode: "onChange",
+    // mode: "touched"
+
+    // Default mode
+    mode: "onSubmit",
+    // mode: "all",
 
     // defaultValues: async () => {
     //   const response = await fetch(
