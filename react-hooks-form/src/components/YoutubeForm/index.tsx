@@ -67,6 +67,7 @@ function YoutubeForm() {
     getValues,
     setValue,
     reset,
+    trigger,
   } = form;
   const {
     errors,
@@ -291,6 +292,18 @@ function YoutubeForm() {
 
         <button type="button" onClick={() => reset()}>
           Reset
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            // trigger("username");
+            // trigger(["username", "email"]);
+
+            trigger();
+          }}
+        >
+          Validate
         </button>
         <button disabled={!isDirty || !isValid || isSubmitting}>Submit</button>
       </form>
